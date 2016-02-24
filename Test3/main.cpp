@@ -6,6 +6,7 @@
 //  Copyright © 2016년 박대웅. All rights reserved.
 //
 
+//#include <cstdio>
 #include <iostream>
 #include <algorithm>
 #include <list>
@@ -13,9 +14,26 @@
 
 using namespace std;
 
+template <typename Container>
+Container make(const char s[])
+{
+    return Container(&s[0], &s[strlen(s)]);
+}
+
 int main(int argc, const char * argv[]) {
     // insert code here...
-    std::cout << "Hello, World!\n";
+    cout << "Using reverse algorithm with a list" << endl;
+    list<char> list1 = make<list<char>>("mark twain");
+    reverse(list1.begin(), list1.end());
+    assert(list1 == make<list<char>>("niawt kram"));
+    cout << " --- Ok." << endl;
+    
+    cout << "Demonstrating generic find algorithm with an array." << endl;
+    char s[] = "C++ is a better C";
+    size_t len = strlen(s);
+    const char* where = find(&s[0], &s[len], 'e');
+    assert(*where == 'e' && *(where + 1) == 't');
+    cout << " --- Ok." << endl;
     
     return 0;
 }
