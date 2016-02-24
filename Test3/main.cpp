@@ -13,13 +13,9 @@
 #include <vector>
 #include <cassert>
 
-using namespace std;
+#include "TemplateDef.h"
 
-template <typename Container>
-Container make(const char s[])
-{
-    return Container(&s[0], &s[strlen(s)]);
-}
+using namespace std;
 
 int main(int argc, const char * argv[]) {
     // insert code here...
